@@ -2,28 +2,20 @@
   line-height: 100px;
 }
 
-.btn {
-  background-color: var(--button-primary-bg);
-  color: var(--white);
-  padding: 10px 17px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.btn:hover {
-  background-color: #2aa242;
-}
-
 button.btn {
   border: none;
   cursor: pointer;
   font-size: 14px;
   padding: 6px 14px;
   margin-left: 16px;
+  background-color: var(--accent-bg);
+}
+button.btn:hover {
+  background-color: #1560d1;
 }
 
 .search-form input {
-  padding: 6px 14px;
+  padding: 7px 12px;
   border-radius: 4px;
   border: none;
   background-color: var(--input-bg);
