@@ -1,0 +1,39 @@
+button.btn {
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.create-project-container {
+  padding: 24px;
+  background-color: var(--secondary-dark-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.create-project-form > input,
+.create-project-form > textarea {
+  background-color: var(--input-bg);
+  color: var(--primary-text-color);
+  padding: 10px 15px;
+  margin-bottom: 24px;
+  border: none;
+  font-size: 16px;
+}
+
+.create-project-form > textarea {
+  height: 300px;
+}
+
+.back {
+  margin-bottom: 24px;
+}
+
+.back span {
+  margin-left: 6px;
+}
+
+.back i,
+.back a {
+  color: var(--accent-bg);
+}

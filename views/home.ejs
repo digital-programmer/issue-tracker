@@ -13,14 +13,20 @@
                 <a href="/project/create" class="btn">Create Project</a>
             </div>
             <% } else { %>
-                <h2 style="margin-bottom: 30px;">Projects</h2>
-                <!-- to display the projects -->
-                <div id="project-container" class="flex valign space-between">
-                    <% for (project of projects) { %>
-                        <%- include('_project') -%>
-                            <% } %>
+                <div style="padding: 7px; margin-top: 50px;">
+                    <a href="/project/create" class="btn">Create New Project</a>
+                    <h2 style="margin-bottom: 30px; margin-top: 50px;">Projects</h2>
+                    <!-- to display the projects -->
+                    <div id="project-container" class="flex valign space-between">
+                        <% for (project of projects) { %>
+                            <%- include('_project') -%>
+                                <% } %>
+                    </div>
                 </div>
+
                 <% } %>
     </div>
 
 </div>
+
+<script src="/js/home.js"></script>

@@ -73,3 +73,7 @@ button.btn:hover {
 #project-container {
   flex-wrap: wrap;
 }
+
+#project-container a {
+  color: var(--primary-text-color);
+}
