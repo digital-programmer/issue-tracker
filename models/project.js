@@ -12,7 +12,7 @@ const projectSchema = new mongoose.Schema({
         require: true
     },
 
-    // include the array of ids of all comments of a post
+    // include the array of ids of all issues of a project
     issues: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +27,7 @@ const projectSchema = new mongoose.Schema({
 
     status: {
         type: String,
-        default: 'ongoing'
+        default: 'open'
     }
 }, {
     timestamps: true,

@@ -11,10 +11,10 @@ const issueSchema = new mongoose.Schema({
         require: true
     },
 
-    label: {
+    status: {
         type: String,
         require: true,
-        default: 'open'
+        default: 'ongoing'
     },
 
     author: {
@@ -27,6 +27,14 @@ const issueSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Project'
     },
+
+    // an issue can have multiple labels,
+    // bug, documentation, duplicate, enhancement, invalid, compilance, RFI, Observation
+    labels: [
+        {
+            type: String,
+        }
+    ]
 
 }, {
     timestamps: true,
