@@ -11,7 +11,7 @@ module.exports.createProject = async function (req, res) {
     const project = await Project.findOne({ name: req.body.name });
     if (!project) {
         await Project.create({
-            name: req.body.name.trim(),
+            name: req.body.name.trim().toLowerCase(),
             description: req.body.description.trim(),
             author: req.body.author.trim()
         });
@@ -20,6 +20,6 @@ module.exports.createProject = async function (req, res) {
         return res.redirect("/");
     }
 
-    req.flash('error', 'Project name already exists, try another');
+    req.flash('error', 'Project name already exists, Try another');
     return res.redirect("back");
 };
