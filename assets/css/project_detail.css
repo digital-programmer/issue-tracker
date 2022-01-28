@@ -1,0 +1,36 @@
+.project-header {
+  height: max-content;
+  background: #abbaab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #abbaab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #abbaab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: rgb(30, 31, 32);
+  padding-bottom: 50px;
+}
+
+.container {
+  margin-top: 0;
+}
+
+.project-header .btn-danger {
+  background-color: rgb(226, 47, 47);
+}
+
+.project-header .btn-danger:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.project-name {
+  line-height: 50px;
+}
+
+.project-description {
+  font-size: 14px;
+}

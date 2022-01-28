@@ -30,7 +30,7 @@ button.btn:hover {
 }
 
 .project-list-item {
-  max-width: 320px;
+  width: 320px;
   border: 1px solid var(--border-color);
   background-color: var(--secondary-dark-color);
   border-radius: 4px;

@@ -23,3 +23,11 @@ module.exports.createProject = async function (req, res) {
     req.flash('error', 'Project name already exists, Try another');
     return res.redirect("back");
 };
+
+module.exports.showProjectDetails = async function (req, res) {
+    const project = await Project.findById({ _id: req.params.id });
+    return res.render('project_detail', {
+        title: 'Issue Tracker | Project Details',
+        project
+    });
+}

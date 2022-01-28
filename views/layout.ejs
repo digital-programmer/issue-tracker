@@ -31,42 +31,42 @@
 
 <body>
 
-    <%- include("_header"); %>
-
-        <main>
-            <%- body %>
-        </main>
-
-        <%- include("_footer"); %>
 
 
-            <%- script %>
-                <!-- <a href="https://icons8.com/icon/tFkfD0nxEBRX/like">Like icon by Icons8</a> -->
-                <script>
+    <main>
+        <%- body %>
+    </main>
+
+
+
+
+    <%- script %>
+        <!-- <a href="https://icons8.com/icon/tFkfD0nxEBRX/like">Like icon by Icons8</a> -->
+        <script>
 
             <% if (flash.success && flash.success.length > 0) { %>
-                        new Noty({
-                            theme: 'relax',
-                            text: '<%= flash.success %>',
-                            type: 'success',
-                            layout: 'topRight',
-                            timeout: 3000,
-                            progressBar: false
-                        }).show();
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.success %>',
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 3000,
+                    progressBar: false
+                }).show();
             <% } %>
 
             <% if (flash.error && flash.error.length > 0) { %>
-                        new Noty({
-                            theme: 'relax',
-                            text: '<%= flash.error %>',
-                            type: 'error',
-                            layout: 'topRight',
-                            timeout: 3000,
-                            progressBar: false
-                        }).show();
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.error %>',
+                    type: 'error',
+                    layout: 'topRight',
+                    timeout: 3000,
+                    progressBar: false
+                }).show();
             <% } %>
 
-                </script>
+        </script>
 </body>
 
 </html>

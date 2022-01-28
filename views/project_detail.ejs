@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/project_detail.css">
+
+
+<section class="project-header">
+    <div class="container flex col space-between">
+        <div class="back" style="margin-top: 20px; font-size: 14px;">
+            <a href="/">
+                <i class="fas fa-arrow-left"></i>
+                <span style="margin-left: 5px;">Back</span>
+            </a>
+        </div>
+        <div style="margin-top: 20px;">
+            <h1 class="project-name">
+                <%= project.name %>
+            </h1>
+            <div class="project-description" style="margin-top: 10px;">
+                <%= project.description %>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
+            <a href="/close-project/<%= project.id %>" class="btn btn-danger">Close Project</a>
+        </div>
+    </div>
+</section>

@@ -11,6 +11,7 @@ const issueSchema = new mongoose.Schema({
         require: true
     },
 
+    // ongoing, todo, resolved
     status: {
         type: String,
         require: true,

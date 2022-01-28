@@ -32,13 +32,13 @@ a {
 }
 
 main {
-  margin-top: 30px;
   min-height: 90vh;
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 30px;
 }
 
 .flex {
