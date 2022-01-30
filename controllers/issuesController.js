@@ -7,3 +7,8 @@ module.exports.index = function (req, res) {
         project_id: req.params.id
     })
 }
+
+
+module.exports.createIssue = function (req, res) {
+    console.log(req.body);
+}

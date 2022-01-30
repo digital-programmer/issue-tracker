@@ -71,3 +71,7 @@ main {
 .btn:hover {
   background-color: #2aa242;
 }
+
+.wrap {
+  flex-wrap: wrap;
+}

@@ -9,5 +9,6 @@ router.get("/:id", projectsController.showProjectDetails);
 
 // for issues
 router.get("/:id/create-issue", issuesController.index);
+router.post("/:id/create-issue", issuesController.createIssue);
 
 module.exports = router;

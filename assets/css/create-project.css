@@ -22,7 +22,7 @@ button.btn {
 }
 
 .create-project-form > textarea {
-  height: 300px;
+  height: 250px;
 }
 
 .back {
@@ -36,4 +36,14 @@ button.btn {
 .back i,
 .back a {
   color: var(--accent-bg);
+}
+
+.options-container input {
+  cursor: pointer;
+}
+
+.options-container > div {
+  flex-basis: 33%;
+  margin-bottom: 10px;
+  font-size: 14px;
 }

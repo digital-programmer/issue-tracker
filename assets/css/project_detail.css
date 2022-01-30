@@ -21,6 +21,7 @@
 
 .project-header .btn-danger {
   background-color: rgb(226, 47, 47);
+  margin-left: 10px;
 }
 
 .project-header .btn-danger:hover {
@@ -33,4 +34,9 @@
 
 .project-description {
   font-size: 14px;
+}
+
+.sidebar {
+  width: 33.33%;
+  border: 1px solid var(--border-color);
 }
