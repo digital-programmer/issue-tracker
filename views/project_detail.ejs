@@ -30,15 +30,22 @@
         <div class="sidebar"></div>
         <div style="flex: 1;">
             <div>
-                <div class="flex space-between valign">
+                <div class="flex space-between valign" style="padding-bottom: 15px;">
                     <h1>Issues</h1>
                     <div class="flex valign" style="font-size: 12px;">
                         <label for="sort_by">Sort By:</label>
-                        <select name="sort_by" id="sort_by" style="margin-left: 6px;">
-                            <option value="0" style="font-size: 12px;">Latest</option>
-                            <option value="1" style="font-size: 12px;">Oldest</option>
-                        </select>
+                        <form action="/sort-by" method="post">
+                            <select name="sort_by" id="sort_by" style="margin-left: 6px;">
+                                <option value="0" style="font-size: 12px;">Latest</option>
+                                <option value="1" style="font-size: 12px;">Oldest</option>
+                            </select>
+                        </form>
                     </div>
+                </div>
+                <div class="issues-container">
+                    <% for (issue of issues) { %>
+                        <%- include('_issue') %>
+                            <% } %>
                 </div>
             </div>
         </div>

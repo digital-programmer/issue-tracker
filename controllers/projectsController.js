@@ -1,5 +1,5 @@
 const Project = require("../models/project");
-
+const Issue = require("../models/issue");
 
 module.exports.index = function (req, res) {
     return res.render("create_project", {
@@ -26,8 +26,10 @@ module.exports.createProject = async function (req, res) {
 
 module.exports.showProjectDetails = async function (req, res) {
     const project = await Project.findById({ _id: req.params.id });
+    const issues = await Issue.find({ 'project': project._id });
     return res.render('project_detail', {
         title: 'Issue Tracker | Project Details',
-        project
+        project,
+        issues
     });
 }
