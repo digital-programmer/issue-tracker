@@ -26,7 +26,7 @@ module.exports.createProject = async function (req, res) {
 
 module.exports.showProjectDetails = async function (req, res) {
     const project = await Project.findById({ _id: req.params.id });
-    const issues = await Issue.find({ 'project': project._id });
+    const issues = await Issue.find({ 'project': project._id }).sort('-createdAt');
     return res.render('project_detail', {
         title: 'Issue Tracker | Project Details',
         project,

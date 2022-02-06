@@ -4,6 +4,7 @@
   padding: 15px;
   background-color: var(--secondary-dark-color);
   border-radius: 4px;
+  margin-bottom: 15px;
 }
 
 .issue-item button {

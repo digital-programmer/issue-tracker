@@ -27,7 +27,70 @@
 
 <section class="issue-section" style="margin-top: 30px;">
     <div class="container flex">
-        <div class="sidebar"></div>
+        <div class="sidebar">
+            <h3 style="margin-bottom: 20px;  margin-top: 10px;">Filters</h3>
+            <form action="/issue/filter-issue" method="post" class="flex col" autocomplete="off" id="filter-form">
+                <div class="flex col">
+                    <label for="issue-title" style="margin-bottom: 5px;">Title</label>
+                    <div class="flex">
+                        <input type="text" id="issue-title" name="title" maxlength="15" style="flex: 1;">
+                        <span style="color: var(--secondary-text-color); margin-left: 6px;">&crarr;</span>
+                    </div>
+                    <div id="title-container" class="flex wrap" style="margin: 10px 0;">
+                    </div>
+                </div>
+                <div class="flex col">
+                    <label for="issue-author" style="margin-bottom: 5px;">Author</label>
+                    <div class="flex">
+                        <input type="text" id="issue-author" name="author" maxlength="15" style="flex: 1;"><span
+                            style="color: var(--secondary-text-color); margin-left: 6px;">&crarr;</span>
+                    </div>
+                    <div id="author-container" class="flex wrap" style="margin: 10px 0;">
+                    </div>
+                </div>
+                <div class="flex col">
+                    <div style="font-size: 14px; margin-bottom: 8px;">Labels</div>
+                    <div class="flex wrap options-container">
+                        <div class="flex valign">
+                            <input type="checkbox" id="bug" name="bug" value="bug">
+                            <label for="bug" style="margin-left: 5px;">Bug</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="documentation" name="documentation" value="documentation">
+                            <label for="documentation" style="margin-left: 5px;">Documentation</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="duplicate" name="duplicate" value="duplicate">
+                            <label for="duplicate" style="margin-left: 5px;">Duplicate</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="enhancement" name="enhancement" value="enhancement">
+                            <label for="enhancement" style="margin-left: 5px;">Enhancement</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="invalid" name="invalid" value="invalid">
+                            <label for="invalid" style="margin-left: 5px;">Invalid</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="compilance" name="compilance" value="compilance">
+                            <label for="compilance" style="margin-left: 5px;">Compilance</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="observation" name="observation" value="observation">
+                            <label for="observation" style="margin-left: 5px;">Observation</label>
+                        </div>
+                        <div class="flex valign">
+                            <input type="checkbox" id="RFI" name="RFI" value="RFI">
+                            <label for="RFI" style="margin-left: 5px;">RFI</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex valign">
+                    <button type="submit" class="filter-btn">Apply</button>
+                    <a href="/issue/clear-filter" class="clear-filter">Clear Filter</a>
+                </div>
+            </form>
+        </div>
         <div style="flex: 1;">
             <div>
                 <div class="flex space-between valign" style="padding-bottom: 15px;">
@@ -43,11 +106,21 @@
                     </div>
                 </div>
                 <div class="issues-container">
-                    <% for (issue of issues) { %>
-                        <%- include('_issue') %>
-                            <% } %>
+                    <% if (issues.length==0) { %>
+                        <div class="no-issue flex col valign">
+                            <div>No issues found</div>
+                            <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
+                        </div>
+                        <% } else { %>
+                            <% for (issue of issues) { %>
+                                <%- include('_issue') %>
+                                    <% } %>
+                                        <% } %>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script src="/js/project_detail.js"></script>

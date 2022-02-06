@@ -2,12 +2,25 @@
 
 <div class="issue-item" id="issue-<%= issue._id %>">
     <div class="flex space-between valign">
-        <h3>
-            <%= issue.title %>
-        </h3>
-        <form action="/resolve-issue" method="post">
-            <button type="submit">Resolve</button>
-        </form>
+        <div>
+            <h3>
+                <%= issue.title %>
+            </h3>
+            <div class="issue-author">
+                <%= issue.author %>
+            </div>
+        </div>
+
+        <div class="flex valign">
+            <form action="/issue/resolve-issue/<%= issue._id %>" method="post">
+                <button type="submit" style="margin-right: 10px;">Resolve</button>
+            </form>
+            <a href="/issue/delete-issue/<%= issue._id %>">
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+
+
     </div>
     <div class="issue-item-details flex space-between">
         <span style="max-width: 60%;">
@@ -19,7 +32,7 @@
     </div>
     <div class="label-container flex wrap valign">
         <% for (label of issue.labels) { %>
-            <span>
+            <span style="margin-top: 5px;">
                 <%= label %>
             </span>
             <% } %>

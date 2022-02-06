@@ -38,5 +38,98 @@
 
 .sidebar {
   width: 33.33%;
+  margin-right: 25px;
   border: 1px solid var(--border-color);
+  height: max-content;
+  padding: 10px 15px;
+}
+
+.sidebar label {
+  font-size: 14px;
+}
+
+.issue-author {
+  font-size: 10px;
+  margin-top: 6px;
+  color: var(--secondary-text-color);
+}
+
+.issue-item a {
+  cursor: pointer;
+  color: var(--primary-text-color);
+  font-size: 14px;
+}
+
+.options-container label {
+  font-size: 12px;
+}
+
+.sidebar form > div {
+  margin-bottom: 15px;
+}
+
+.sidebar form input[type="text"] {
+  background-color: var(--secondary-dark-color);
+  border: none;
+  color: var(--secondary-text-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.sidebar form input[type="text"]:focus {
+  box-shadow: 0 0 8px rgb(29, 114, 233);
+}
+
+.options-container {
+  justify-content: space-between;
+}
+.options-container > div {
+  flex-basis: 50%;
+  margin-bottom: 6px;
+}
+
+.filter-btn {
+  border: none;
+  background-color: var(--accent-bg);
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.clear-filter {
+  font-size: 12px;
+  text-decoration: underline;
+  margin-left: 10px;
+  color: rgb(97, 97, 240);
+}
+
+.issues-container {
+  position: relative;
+}
+
+.no-issue {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  margin-top: 50px;
+}
+
+.no-issue div {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+/* dynamic css */
+.tag {
+  font-size: 10px;
+  padding: 4px 8px;
+  background-color: var(--secondary-dark-color);
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
