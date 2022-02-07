@@ -2,14 +2,14 @@
 
 <div class="container flex col">
     <form action="/search-project" method="post" class="search-form flex valign">
-        <input type="text" placeholder="Search project..." />
+        <input type="text" placeholder="Search project..." name="title" value="<%= input_value %>" />
         <button type="submit" class="btn">Search</button>
     </form>
 
     <div>
         <% if (projects.length==0) { %>
             <div class="project-not-found">
-                <h2>You don't have any projects yet.</h2>
+                <h2>No projects found.</h2>
                 <a href="/project/create" class="btn">Create Project</a>
             </div>
             <% } else { %>

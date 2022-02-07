@@ -18,10 +18,13 @@
             </div>
         </div>
 
-        <div style="margin-top: 50px;">
-            <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
-            <a href="/close-project/<%= project.id %>" class="btn btn-danger">Close Project</a>
-        </div>
+        <% if(project.status==='open' ) { %>
+            <div style="margin-top: 50px;">
+                <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
+                <a href="/project/close-project/<%= project.id %>" class="btn btn-danger">Close Project</a>
+            </div>
+            <% } %>
+
     </div>
 </section>
 
@@ -109,7 +112,9 @@
                     <% if (issues.length==0) { %>
                         <div class="no-issue flex col valign">
                             <div>No issues found</div>
-                            <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
+                            <% if (project.status=='open' ) { %>
+                                <a href="/project/<%= project.id %>/create-issue" class="btn">Create Issue</a>
+                                <% } %>
                         </div>
                         <% } else { %>
                             <% for (issue of issues) { %>

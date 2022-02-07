@@ -38,3 +38,28 @@ module.exports.createIssue = async function (req, res) {
     }
 
 }
+
+
+module.exports.clearFilter = function (req, res) {
+    return res.redirect('back');
+}
+
+module.exports.destroy = async function (req, res) {
+    try {
+        let issue = await Issue.findById(req.params.id);
+        if (issue) {
+            let project_id = issue.project;
+            issue.remove();
+            let project = await Project.findByIdAndUpdate(project_id, { $pull: { issues: req.params.id } });
+            req.flash('success', 'Issue deleted successfully');
+            return res.redirect('back');
+        } else {
+            req.flash('error', 'Cannot delete issue');
+            return res.redirect('back');
+        }
+    } catch (err) {
+        console.log('Error', err);
+        req.flash('error', 'Cannot delete issue');
+        return res.redirect('back');
+    }
+}

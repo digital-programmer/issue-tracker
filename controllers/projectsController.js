@@ -33,3 +33,17 @@ module.exports.showProjectDetails = async function (req, res) {
         issues
     });
 }
+
+module.exports.closeProject = async function (req, res) {
+    const project = await Project.findById({ _id: req.params.id }).populate({ path: 'issues' });
+    if (project) {
+        project.status = 'closed';
+        for (issue of project.issues) {
+            issue.status = 'closed';
+            issue.save();
+        }
+        project.save();
+    }
+    req.flash('success', "Project closed");
+    return res.redirect("/");
+}

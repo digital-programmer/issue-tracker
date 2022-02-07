@@ -6,6 +6,7 @@ const issuesController = require("../controllers/issuesController");
 router.get("/create", projectsController.index);
 router.post("/create-project", projectsController.createProject);
 router.get("/:id", projectsController.showProjectDetails);
+router.get("/close-project/:id", projectsController.closeProject);
 
 // for issues
 router.get("/:id/create-issue", issuesController.index);

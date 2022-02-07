@@ -12,12 +12,18 @@
         </div>
 
         <div class="flex valign">
-            <form action="/issue/resolve-issue/<%= issue._id %>" method="post">
-                <button type="submit" style="margin-right: 10px;">Resolve</button>
-            </form>
-            <a href="/issue/delete-issue/<%= issue._id %>">
-                <i class="fas fa-trash"></i>
-            </a>
+            <% if(issue.status=='ongoing' ){ %>
+                <form action="/issue/resolve-issue/<%= issue._id %>" method="post">
+                    <button type="submit" style="margin-right: 10px;">Resolve</button>
+                </form>
+                <% } else { %>
+                    <span
+                        style="font-size: 12px; background-color: var(--canvas); border: 1px solid var(--border-color); padding: 5px 10px; margin-right: 10px; border-radius: 5px;">Closed</span>
+                    <% } %>
+
+                        <a href="/issue/delete-issue/<%= issue._id %>">
+                            <i class="fas fa-trash"></i>
+                        </a>
         </div>
 
 
