@@ -6,6 +6,8 @@ var filter_form = document.getElementById('filter-form');
 var filter_btn = document.getElementById('filter-btn');
 var project_id = document.getElementById('project-id').value;
 var issue_container = document.getElementById('issue-container');
+
+// store the state of all filters used to search issues
 const filter_params = {
     title: [],
     author: [],
@@ -13,19 +15,24 @@ const filter_params = {
     project_id
 }
 
+// press enter key or click on apply button to use the filter feature
 filter_form.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    // check which checkboxes are marked
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     var checked_values = Array.from(checkboxes).map(item => item.value);
     filter_params.label = checked_values;
 
+    // if any title is written, add it to title search tags
     if (issue_title.value) {
         var new_element = create_element(issue_title.value, 'title');
         title_container.insertAdjacentElement("beforeend", new_element);
         filter_params.title.push(issue_title.value);
         issue_title.value = '';
     }
+
+    // if any author is written, add it to author search tags
     if (issue_author.value) {
         var new_element = create_element(issue_author.value, 'author');
         author_container.insertAdjacentElement("beforeend", new_element);
@@ -33,6 +40,7 @@ filter_form.addEventListener('submit', function (e) {
         issue_author.value = '';
     }
 
+    // on clicking apply button, marked checkbox are matched with labels of the issues related to that project
     if (filter_params.title.length > 0 || filter_params.author.length > 0 || filter_params.label.length > 0) {
         const data = JSON.stringify(filter_params);
         $.ajax({
@@ -54,7 +62,7 @@ filter_form.addEventListener('submit', function (e) {
     }
 });
 
-
+// create search tags for issue title and issue author
 function create_element(message, type_message) {
     var new_element = document.createElement('div');
     new_element.classList.add('tag');
@@ -70,9 +78,11 @@ function create_element(message, type_message) {
     return new_element;
 }
 
+// prepare DOM for search results based on filter applied
 function prepareDOM(data) {
     const issues = data;
 
+    // if no issues are found
     if (issues.length == 0) {
         return `<div class="no-issue flex col valign"><div>No issues found</div></div>`
     }

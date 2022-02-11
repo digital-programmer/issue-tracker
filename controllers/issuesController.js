@@ -1,6 +1,8 @@
 const Project = require("../models/project");
 const Issue = require("../models/issue");
 
+
+// show create issue page
 module.exports.index = function (req, res) {
     return res.render('create_issue', {
         title: "Issue Tracker | Create Issue",
@@ -8,15 +10,17 @@ module.exports.index = function (req, res) {
     })
 }
 
-
+// create an issue for the specified project
 module.exports.createIssue = async function (req, res) {
     const labelList = ['bug', 'documentation', 'duplicate', 'enhancement', 'invalid', 'compilance', 'observation', 'RFI'];
     try {
+        // find if project exists
         let project = await Project.findById({ _id: req.params.id });
         if (project) {
             const markedLabels = labelList.filter(label => {
                 return req.body[label] !== undefined;
             });
+            // create issue with specified labels
             const issue = await Issue.create({
                 'title': req.body.name,
                 'description': req.body.description,
@@ -24,7 +28,7 @@ module.exports.createIssue = async function (req, res) {
                 'project': project._id,
                 'labels': markedLabels
             });
-
+            // link issue to project 
             project.issues.push(issue);
             project.save();
 
@@ -39,17 +43,21 @@ module.exports.createIssue = async function (req, res) {
 
 }
 
-
+// clear all filters and refresh page
 module.exports.clearFilter = function (req, res) {
     return res.redirect('back');
 }
 
+// delete an issue
 module.exports.destroy = async function (req, res) {
     try {
+        // find issue
         let issue = await Issue.findById(req.params.id);
         if (issue) {
             let project_id = issue.project;
+            // remove issue from db
             issue.remove();
+            // delete issue from project issue list
             let project = await Project.findByIdAndUpdate(project_id, { $pull: { issues: req.params.id } });
             req.flash('success', 'Issue deleted successfully');
             return res.redirect('back');
@@ -64,6 +72,7 @@ module.exports.destroy = async function (req, res) {
     }
 }
 
+// resolve an issue and mark it as done
 module.exports.resolveIssue = async function (req, res) {
     try {
         let issue = await Issue.findById(req.params.id);
@@ -84,6 +93,8 @@ module.exports.resolveIssue = async function (req, res) {
 }
 
 
+// receive data in ajax post request
+// separate different filter params
 module.exports.filterIssue = async function (req, res) {
     const key_array = Object.keys(req.body)[0];
     const input_data = JSON.parse(key_array);
@@ -92,6 +103,7 @@ module.exports.filterIssue = async function (req, res) {
     const input_label = input_data.label;
     try {
         const issues = await Issue.find({ 'project': input_data.project_id });
+        // check if filter parameters match with any of the issues
         const data = issues.filter(issue => {
             const is_title_present = input_title.some(str => issue.title.toLowerCase().includes(str.toLowerCase()));
             const is_author_present = input_author.some(str => issue.author.toLowerCase().includes(str.toLowerCase()));
@@ -109,7 +121,7 @@ module.exports.filterIssue = async function (req, res) {
 
 }
 
-
+// to find common elements between two arrays
 function findCommonElements(arr1, arr2) {
     return arr1.some(item => arr2.includes(item));
 }
