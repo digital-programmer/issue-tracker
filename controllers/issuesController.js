@@ -82,3 +82,34 @@ module.exports.resolveIssue = async function (req, res) {
         return res.redirect('back');
     }
 }
+
+
+module.exports.filterIssue = async function (req, res) {
+    const key_array = Object.keys(req.body)[0];
+    const input_data = JSON.parse(key_array);
+    const input_title = input_data.title;
+    const input_author = input_data.author;
+    const input_label = input_data.label;
+    try {
+        const issues = await Issue.find({ 'project': input_data.project_id });
+        const data = issues.filter(issue => {
+            const is_title_present = input_title.some(str => issue.title.toLowerCase().includes(str.toLowerCase()));
+            const is_author_present = input_author.some(str => issue.author.toLowerCase().includes(str.toLowerCase()));
+            const is_label_present = findCommonElements(input_label, issue.labels);
+            return is_title_present || is_author_present || is_label_present;
+        });
+
+        if (req.xhr) {
+            return res.status(200).json({ data });
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ data: [] });
+    }
+
+}
+
+
+function findCommonElements(arr1, arr2) {
+    return arr1.some(item => arr2.includes(item));
+}

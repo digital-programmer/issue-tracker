@@ -33,10 +33,11 @@
         <div class="sidebar">
             <h3 style="margin-bottom: 20px;  margin-top: 10px;">Filters</h3>
             <form action="/issue/filter-issue" method="post" class="flex col" autocomplete="off" id="filter-form">
+                <input type="hidden" name="projectId" value="<%= project._id %>" id="project-id">
                 <div class="flex col">
                     <label for="issue-title" style="margin-bottom: 5px;">Title</label>
                     <div class="flex">
-                        <input type="text" id="issue-title" name="title" maxlength="15" style="flex: 1;">
+                        <input type="text" id="issue-title" name="title" maxlength="30" style="flex: 1;">
                         <span style="color: var(--secondary-text-color); margin-left: 6px;">&crarr;</span>
                     </div>
                     <div id="title-container" class="flex wrap" style="margin: 10px 0;">
@@ -45,7 +46,7 @@
                 <div class="flex col">
                     <label for="issue-author" style="margin-bottom: 5px;">Author</label>
                     <div class="flex">
-                        <input type="text" id="issue-author" name="author" maxlength="15" style="flex: 1;"><span
+                        <input type="text" id="issue-author" name="author" maxlength="30" style="flex: 1;"><span
                             style="color: var(--secondary-text-color); margin-left: 6px;">&crarr;</span>
                     </div>
                     <div id="author-container" class="flex wrap" style="margin: 10px 0;">
@@ -89,7 +90,7 @@
                     </div>
                 </div>
                 <div class="flex valign">
-                    <button type="submit" class="filter-btn">Apply</button>
+                    <button class="filter-btn" id="filter-btn" type="submit">Apply</button>
                     <a href="/issue/clear-filter" class="clear-filter">Clear Filter</a>
                 </div>
             </form>
@@ -123,7 +124,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="issues-container">
+                <div class="issues-container" id="issue-container">
                     <% if (issues.length==0) { %>
                         <div class="no-issue flex col valign">
                             <div>No issues found</div>

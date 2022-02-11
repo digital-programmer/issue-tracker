@@ -98,6 +98,11 @@
   font-weight: bold;
   padding: 6px 10px;
   border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
 }
 
 .clear-filter {

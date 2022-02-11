@@ -12,7 +12,8 @@ const flash = require('connect-flash');
 const customWare = require("./config/middleware");
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.text());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static('./assets'));
 app.use(logger(loggerConfig.morgan.mode, loggerConfig.morgan.options));
 app.use(expressLayouts);
@@ -27,7 +28,7 @@ app.set("views", "./views");
 
 app.use(session({
     cookie: { maxAge: 6000000 },
-    secret: 'issue_tracker',
+    secret: process.env.SESSION_COOKIE_KEY,
     resave: false,
     saveUninitialized: false
 }));
