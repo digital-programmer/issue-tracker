@@ -26,11 +26,18 @@ module.exports.createProject = async function (req, res) {
 
 module.exports.showProjectDetails = async function (req, res) {
     const project = await Project.findById({ _id: req.params.id });
-    const issues = await Issue.find({ 'project': project._id }).sort('-createdAt');
+    let issues;
+    let sort_by = req.body.sort_by || '0';
+    if (sort_by == '0') {
+        issues = await Issue.find({ 'project': project._id }).sort('-createdAt');
+    } else {
+        issues = await Issue.find({ 'project': project._id });
+    }
     return res.render('project_detail', {
         title: 'Issue Tracker | Project Details',
         project,
-        issues
+        issues,
+        sort_by
     });
 }
 

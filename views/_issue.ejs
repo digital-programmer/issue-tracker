@@ -13,7 +13,7 @@
 
         <div class="flex valign">
             <% if(issue.status=='ongoing' ){ %>
-                <form action="/issue/resolve-issue/<%= issue._id %>" method="post">
+                <form action="/issue/resolve-issue/<%= issue._id %>" method="get">
                     <button type="submit" style="margin-right: 10px;">Resolve</button>
                 </form>
                 <% } else { %>

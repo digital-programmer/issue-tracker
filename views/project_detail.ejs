@@ -100,10 +100,25 @@
                     <h1>Issues</h1>
                     <div class="flex valign" style="font-size: 12px;">
                         <label for="sort_by">Sort By:</label>
-                        <form action="/sort-by" method="post">
-                            <select name="sort_by" id="sort_by" style="margin-left: 6px;">
-                                <option value="0" style="font-size: 12px;">Latest</option>
-                                <option value="1" style="font-size: 12px;">Oldest</option>
+
+                        <form action="/project/<%= project._id %>" method="post">
+                            <select name="sort_by" id="sort_by" style="margin-left: 6px;" onchange="this.form.submit()">
+                                <% if (sort_by=='0' ) { %>
+                                    <option value="0" style="font-size: 12px;" selected>
+                                        Latest
+                                    </option>
+                                    <option value="1" style="font-size: 12px;">
+                                        Oldest
+                                    </option>
+                                    <% } else { %>
+                                        <option value="0" style="font-size: 12px;">
+                                            Latest
+                                        </option>
+                                        <option value="1" style="font-size: 12px;" selected>
+                                            Oldest
+                                        </option>
+                                        <% } %>
+
                             </select>
                         </form>
                     </div>

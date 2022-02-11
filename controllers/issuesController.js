@@ -63,3 +63,22 @@ module.exports.destroy = async function (req, res) {
         return res.redirect('back');
     }
 }
+
+module.exports.resolveIssue = async function (req, res) {
+    try {
+        let issue = await Issue.findById(req.params.id);
+        if (issue) {
+            issue.status = 'closed';
+            issue.save();
+            req.flash('success', 'Issue resolved successfully');
+            return res.redirect('back');
+        } else {
+            req.flash('error', 'Cannot resolve issue');
+            return res.redirect('back');
+        }
+    } catch (err) {
+        console.log('Error', err);
+        req.flash('error', 'Cannot resolve issue');
+        return res.redirect('back');
+    }
+}
