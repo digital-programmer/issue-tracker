@@ -2,7 +2,7 @@
 
 ## Application to track issues/bugs for a project.
 
-### Youtube Link - ![https://youtu.be/7bl9IwnBh9Q]
+### Youtube Link - <a href='https://youtu.be/7bl9IwnBh9Q'>Issue Tracker Demo</a>
 
 ## Features
 
@@ -12,12 +12,16 @@
 - Give a button to create a new Project (On creating a new project it should
   appear in the list)
 
+<img src="./github_resources/homepage.png">
+
 ### Create Project Page
 
 - Accept the following fields to create a project
   - Name
   - Description
   - Author
+
+<img src="./github_resources/createissuepage.png">
 
 ### Project Detail Page
 
@@ -29,6 +33,8 @@
   - Filter by author
   - Search by title and description
 - A button to create an issue
+
+<img src="./github_resources/projectdetailpage.png">
 
 ### Create Issue Page
 
